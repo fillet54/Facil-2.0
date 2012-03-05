@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Album" do
 
   before do
-    @album = Album.new(name: "Album 1", description: "Album 1 Description")
+    @album = FactoryGirl.create(:album)
   end
 
   subject { @album }
@@ -22,5 +22,13 @@ describe "Album" do
   describe "when name is too long" do
     before { @album.name = "a" * 51 }
     it { should_not be_valid }
+  end
+
+  describe "photo association" do
+    before { @album.save }
+    let(:photo1) { FactoryGirl.create(:photo, album: @album) }
+    let(:photo2) { FactoryGirl.create(:photo, album: @album) }
+    
+    its(:photos) {should include(photo1, photo2) } 
   end
 end
