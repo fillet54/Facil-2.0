@@ -28,6 +28,7 @@ gem 'jquery-rails'
 group :test do
   gem 'capybara'
   gem 'spork'
+  gem 'factory_girl_rails'
 end
 
 group :production do
