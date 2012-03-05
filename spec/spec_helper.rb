@@ -37,5 +37,5 @@ Spork.prefork do
   end
 end
 
-Spork.each run do
+Spork.each_run do
 end
