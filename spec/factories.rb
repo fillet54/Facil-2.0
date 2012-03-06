@@ -1,11 +1,14 @@
 FactoryGirl.define do
   factory :album do
-    name "Album 1"
-    description "This is the album 1 description"
+    sequence(:name) { |n| "Album #{n}" }
+    sequence(:description) { |n| "This is the album #{n} description" }
   end
 
   factory :photo do
+    name "Image 1"
+    description "Image 1 description"
     path "the/image/path"
+
     album
   end
 end
