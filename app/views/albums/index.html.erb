@@ -1,6 +1,13 @@
+<% provide(:title, "Albums") %>
 <h1>All Albums</h1>
 
 <%= will_paginate %>
+
+<a class="btn btn-primary" 
+   href="<%= new_album_path %>"
+   alt="Create Album">
+   <i class="icon-plus icon-white"></i>Create Album
+</a>
 
 <ul class="thumbnails">
   <%= render @albums %>

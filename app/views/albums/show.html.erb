@@ -1,0 +1,10 @@
+<% provide(:title, @album.name) %>
+<h1><%= @album.name %> </h1>
+
+<%= will_paginate @photos, param_name: :photos_page %>
+
+<ul class="thumbnails">
+  <%= render @photos %>
+</ul>
+
+<%= will_paginate @photos, param_name: :photos_page %>

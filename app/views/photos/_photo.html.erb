@@ -1,0 +1,9 @@
+<li class="span3">
+<%= link_to image_tag("http://placehold.it/260x180",
+                      alt: photo.name), 
+            '#', 
+            class: "thumbnail" %>
+    <strong><%= photo.name %></strong>
+    <%= raw "&mdash;" unless photo.description.blank? %> 
+    <%= photo.description %>
+</li>
