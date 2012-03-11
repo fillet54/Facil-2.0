@@ -3,14 +3,22 @@
 
 <%= will_paginate %>
 
-<a class="btn btn-primary" 
-   href="<%= new_album_path %>"
-   alt="Create Album">
-   <i class="icon-plus icon-white"></i>Create Album
-</a>
+<div class="row">
+  <div class="span2 offset10">
+    <a class="btn btn-primary" 
+      href="<%= new_album_path %>"
+      alt="Create Album">
+      <i class="icon-plus icon-white"></i>Create Album
+    </a>
+  </div>
+</div>
 
-<ul class="thumbnails">
-  <%= render @albums %>
-</ul>
+<div class="row">
+  <div class="span12">
+    <ul class="thumbnails">
+      <%= render @albums %>
+    </ul>
+  </div>
+</div>
 
 <%= will_paginate %>
