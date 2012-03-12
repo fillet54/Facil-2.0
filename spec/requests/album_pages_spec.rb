@@ -85,6 +85,12 @@ describe "Album pages" do
       it "should create an album" do
         expect { click_button "Create Album" }.to change(Album, :count)
       end
+
+      describe "flash message" do
+        before { click_button "Create Album" }
+
+        it { should have_content("Album was created successfully") }
+      end
     end
   end
 end
