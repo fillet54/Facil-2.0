@@ -55,6 +55,31 @@ p {
   line-height: 1.7em;
 }
 
+/* Footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+  a {
+    color: #555;
+  }
+  &:hover {
+    color: #222;
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
 /* Forms */
 
 input, textarea, select, .uneditable-input {
