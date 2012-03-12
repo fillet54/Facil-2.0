@@ -7,10 +7,7 @@ describe "Album pages" do
   subject { page }
 
   describe "index page" do
-  
-    before do
-      visit albums_path
-    end 
+    before { visit albums_path }
 
     it { should have_selector('h1',    text: "All Albums") }
     it { should have_selector('title', text: full_title('Albums')) }
@@ -44,9 +41,7 @@ describe "Album pages" do
   end
 
   describe "show page" do
-    before do
-      visit album_path(album)
-    end
+    before { visit album_path(album) }
 
     describe "pagination" do
       before(:all) { 40.times { FactoryGirl.create(:photo, album: album) } }
@@ -64,9 +59,7 @@ describe "Album pages" do
   end
   
   describe "create album page" do
-    before do 
-      visit new_album_path
-    end 
+    before { visit new_album_path }
 
     it { should have_selector('h1',    text: "Create Album") }
     it { should have_selector('title', text: full_title("Create Album") ) }
@@ -78,22 +71,20 @@ describe "Album pages" do
     end
 
     describe "error message" do
-      before do
-        click_button "Create Album"
-      end
+      before { click_button "Create Album" } 
 
       let(:error) { 'The form contains 1 error' }
 
       it { should have_selector('h1',    text: "Create Album") }
       it { should have_content(error) }
-
     end
 
     describe "with valid information" do
-      before do
-        fill_in "Name"
+      before { fill_in "Name", with: "New Album" }
+
+      it "should create an album" do
+        expect { click_button "Create Album" }.to change(Album, :count)
       end
     end
-
   end
 end
