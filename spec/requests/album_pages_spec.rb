@@ -11,6 +11,7 @@ describe "Album pages" do
 
     it { should have_selector('h1',    text: "All Albums") }
     it { should have_selector('title', text: full_title('Albums')) }
+    it { should have_link('Create Album') }
 
     describe "when clicking on create album" do
       before { click_link "Create Album" }
@@ -24,7 +25,6 @@ describe "Album pages" do
       
       it { should have_link('Next') }
       it { should have_link('2') }
-      it { should have_link('Create Album') }
 
       it "should list all albums" do
         Album.all[0..29].each do |album|
@@ -43,6 +43,9 @@ describe "Album pages" do
   describe "show page" do
     before { visit album_path(album) }
 
+    it { should have_selector('h1', text: album.name) }
+    it { should have_link("Add Photo") }
+
     describe "pagination" do
       before(:all) { 40.times { FactoryGirl.create(:photo, album: album) } }
       after(:all) { Album.delete_all }
@@ -55,6 +58,13 @@ describe "Album pages" do
           page.should have_selector('li', text: photo.name)
         end
       end
+    end
+
+    describe "when clicking on 'Add Photo'" do
+      before { click_link "Add Photo" }
+
+      it { should have_selector('h1', text: 'Add New Photo') }
+      it { should have_content(album.name) }
     end
   end
   

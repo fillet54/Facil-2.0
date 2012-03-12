@@ -19,7 +19,7 @@ class AlbumsController < ApplicationController
       flash[:success] = "Album was created successfully"
       redirect_to albums_path
     else
-      render 'new'
+      render action: 'new'
     end
   end
 end 
