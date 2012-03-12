@@ -2,6 +2,11 @@
   <div class="navbar-inner">
     <div class="container">
       <a class="brand" href="#">Facil</a>
+      <nav>
+        <ul class="nav pull-right">
+          <%= yield :command_navigation %>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>

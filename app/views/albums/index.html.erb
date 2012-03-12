@@ -3,15 +3,13 @@
 
 <%= will_paginate %>
 
-<div class="row">
-  <div class="span2 offset10">
-    <a class="btn btn-primary" 
-      href="<%= new_album_path %>"
-      alt="Create Album">
+<% content_for :command_navigation do %>
+  <li><div>
+    <a class="btn btn-primary" href="<%= new_album_path %>">
       <i class="icon-plus icon-white"></i>Create Album
-    </a>
-  </div>
-</div>
+  </a></div>
+  <li>
+<% end %>
 
 <div class="row">
   <div class="span12">
