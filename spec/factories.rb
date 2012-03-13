@@ -7,7 +7,7 @@ FactoryGirl.define do
   factory :photo do
     sequence(:name) { |n| "Image #{n}" }
     sequence(:description) { |n| "Image #{n} description" }
-    sequence(:path) { |n| "image_#{n}_path" }
+    image { File.open(File.join(Rails.root, 'spec', 'support', 'photos', 'images', 'rails.png')) }
 
     album
   end

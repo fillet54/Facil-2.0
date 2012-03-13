@@ -1,5 +1,5 @@
 <li class="span3">
-<%= link_to image_tag("http://placehold.it/260x180",
+<%= link_to image_tag(photo.image_url(:thumb).to_s,
                       alt: photo.name), 
             '#', 
             class: "thumbnail" %>
