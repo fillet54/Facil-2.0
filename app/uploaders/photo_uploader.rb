@@ -13,7 +13,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    Rails.env.production? ? (primary_folder = "") : (primary_folder = "#{Rails.root}/spec/support/")
+    Rails.env.test? ? (primary_folder = "#{Rails.root}/spec/support/"): (primary_folder = "")
     "#{primary_folder}uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
