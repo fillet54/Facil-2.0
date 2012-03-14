@@ -1,0 +1,24 @@
+<%= provide(:title, "Add New Photo") %>
+
+<%= content_for :breadcrumbs do %>
+  <ul class="nav">
+    <li>
+      <a href="<%= album_path(@album) %>"><%= @album.name %></a> 
+    </li>
+<% end %>
+
+<h1>Add New Photo</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @photo, html: { multipart: true } do |f| %>
+      <%= f.hidden_field :album_id, { value: @album.id } %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.file_field :image %>
+
+      <%= f.submit "Add Photo", class: "btn btn-primary btn-large" %>
+    <% end %>
+  </div>
+</div>

@@ -1,9 +1,22 @@
+<% provide(:title, "Albums") %>
 <h1>All Albums</h1>
 
 <%= will_paginate %>
 
-<ul>
-  <%= render @albums %>
-</ul>
+<% content_for :command_navigation do %>
+  <li><div>
+    <a class="btn btn-primary" href="<%= new_album_path %>">
+      <i class="icon-plus-sign icon-white"></i> Create Album
+  </a></div>
+  <li>
+<% end %>
+
+<div class="row">
+  <div class="span12">
+    <ul class="thumbnails">
+      <%= render @albums %>
+    </ul>
+  </div>
+</div>
 
 <%= will_paginate %>

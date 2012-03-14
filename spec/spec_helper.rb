@@ -34,6 +34,18 @@ Spork.prefork do
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
+
+    config.after(:all) do
+      # remove carrierwave test files
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
+
+  end
+
+  # Speed up test. We don't need to process
+  CarrierWave.configure do |config|
+    config.storage = :file
+    config.enable_processing = false
   end
 end
 

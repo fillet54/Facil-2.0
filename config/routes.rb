@@ -1,6 +1,7 @@
 GomeztreeCom::Application.routes.draw do
 
   resources :albums
+  resources :photos
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

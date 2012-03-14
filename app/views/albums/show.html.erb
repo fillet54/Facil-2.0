@@ -1,0 +1,23 @@
+<% provide(:title, @album.name) %>
+<h1><%= @album.name %> </h1>
+
+<%= will_paginate @photos, param_name: :photos_page %>
+
+<% content_for :command_navigation do %>
+<li>
+<div>
+  <a class="btn btn-primary" href="<%= new_photo_path(album_id: @album) %>">
+    <i class="icon-plus icon-white"></i>Add Photo</a>
+  </div>
+</li>
+<% end %>
+
+<div class="row">
+  <div class="span12">
+    <ul class="thumbnails">
+      <%= render @photos %>
+    </ul>
+  </div>
+</div>
+
+<%= will_paginate @photos, param_name: :photos_page %>
