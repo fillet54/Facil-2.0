@@ -1,6 +1,6 @@
 <% provide(:title, @album.name) %>
-<h1><%= @album.name %> </h1>
-<h2><%= @album.description %> </h2>
+<h1><%= best_in_place @album, :name %> </h1>
+<h2><%= best_in_place @album, :description %> </h2>
 
 <%= will_paginate @photos, param_name: :photos_page %>
 
