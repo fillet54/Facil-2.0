@@ -1,17 +1,16 @@
 require 'spec_helper'
 
 describe "Album pages" do
-
-  let(:album) { FactoryGirl.create(:album) } 
   
   subject { page }
 
   describe "index page" do
+    let(:album) { FactoryGirl.create(:album) } 
     before { visit albums_path }
 
     it { should have_selector('h1',    text: "All Albums") }
     it { should have_selector('title', text: full_title('Albums')) }
-    it { should have_link('Create Album') }
+    it { should have_link('Create Album', href: new_album_path) }
 
     describe "when clicking on create album" do
       before { click_link "Create Album" }
@@ -40,11 +39,15 @@ describe "Album pages" do
     end
   end
 
-  describe "show page" do
+  describe "show" do
+    let(:album) { FactoryGirl.create(:album) }
     before { visit album_path(album) }
 
-    it { should have_selector('h1', text: album.name) }
-    it { should have_link("Add Photo") }
+    describe "page" do
+      it { should have_selector('h1', text: album.name) }
+      it { should have_link("Add Photo", href: new_photo_path(album_id: album)) }
+      it { should have_link("Edit Album", href: edit_album_path(album)) }
+    end
 
     describe "pagination" do
       before(:all) { 40.times { FactoryGirl.create(:photo, album: album) } }
@@ -68,11 +71,13 @@ describe "Album pages" do
     end
   end
   
-  describe "create album page" do
+  describe "new" do
     before { visit new_album_path }
 
-    it { should have_selector('h1',    text: "Create Album") }
-    it { should have_selector('title', text: full_title("Create Album") ) }
+    describe "page" do
+      it { should have_selector('h1',    text: "Create Album") }
+      it { should have_selector('title', text: full_title("Create Album") ) }
+    end
 
     describe "with invalid information" do
       it "should not create an album" do
@@ -101,6 +106,41 @@ describe "Album pages" do
 
         it { should have_content("Album was created successfully") }
       end
+    end
+  end
+  
+  describe "edit" do
+    let(:album) { FactoryGirl.create(:album) }
+    before { visit edit_album_path(album) }
+
+    describe "page" do
+      it { should have_selector('h1',    text: "Edit Album") }
+      it { should have_selector('title', text: full_title("Edit Album")) }
+    end
+    
+    describe "with invalid information" do
+      let(:error) { "The form contains 1 error" }
+      before do
+        fill_in "Name", with: ""
+        click_button "Update Album" 
+      end
+
+      it { should have_content(error) }
+    end
+
+    describe "with valid information" do
+      let(:album) { FactoryGirl.create(:album) }
+      let(:new_name) { "New Album Name" }
+      let(:new_description) { "New Album Description" }
+      before do
+        fill_in "Name",        with: new_name
+        fill_in "Description", with: new_description
+        click_button "Update Album"
+      end
+
+      it { should have_selector('title', text: full_title(new_name)) }
+      it { should have_selector('h1',    text: new_name) }
+      it { should have_selector('div.alert-success') }
     end
   end
 end

@@ -22,4 +22,18 @@ class AlbumsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def edit
+    @album = Album.find_by_id(params[:id])
+  end
+
+  def update
+    @album = Album.find(params[:id])
+    if @album.update_attributes(params[:album])
+      flash[:success] = "Album Updated Successfully"
+      redirect_to @album
+    else
+      render 'edit'
+    end
+  end
 end 
