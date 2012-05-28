@@ -60,6 +60,7 @@ describe "Album pages" do
       it "should display all photos" do
         album.photos[0..29].each do |photo|
           page.should have_selector('li', text: photo.name)
+          page.should have_link(photo.name, :href => photo_path(photo))
         end
       end
     end      

@@ -15,4 +15,15 @@ describe "Photo pages" do
       end
     end
   end
+
+  describe "show" do
+    let(:photo) { FactoryGirl.create(:photo, album: album) }
+    before { visit photo_path(photo) }
+
+    describe "page" do
+      it { should have_selector('h1', text: photo.name) }
+      it { should have_selector('title', text: full_title(photo.name)) }
+      it { should have_selector('img', src: photo.image_url.to_s) }
+    end
+  end
 end
