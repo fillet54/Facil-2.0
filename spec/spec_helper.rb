@@ -35,11 +35,12 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
 
+    config.include BestInPlace::TestHelpers
+
     config.after(:all) do
       # remove carrierwave test files
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
     end
-
   end
 
   # Speed up test. We don't need to process
