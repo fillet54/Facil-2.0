@@ -28,6 +28,7 @@ describe "Album pages" do
       it "should list all albums" do
         Album.all[0..29].each do |album|
           page.should have_selector('li', text: album.name)
+          page.should have_selector('img', src: album.image_url)
         end
       end
 

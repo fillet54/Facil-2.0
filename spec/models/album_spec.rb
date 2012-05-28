@@ -11,6 +11,7 @@ describe "Album" do
   it { should respond_to(:name) }
   it { should respond_to(:description) }
   it { should respond_to(:photos) }
+  it { should respond_to(:image_url) }
 
   it { should be_valid }
 
@@ -30,5 +31,19 @@ describe "Album" do
     let(:photo2) { FactoryGirl.create(:photo, album: @album) }
     
     its(:photos) {should include(photo1, photo2) } 
+  end
+
+  describe "preview image" do
+    describe "without any photos" do
+      its(:image_url) { should eq("http://placehold.it/260x180") }
+    end
+
+    describe "with multiple photos" do
+      before { @album.save }
+      let(:photo1) { FactoryGirl.create(:photo, album: @album) }
+      let(:photo2) { FactoryGirl.create(:photo, album: @album) }
+
+      its(:image_url) { should eq(photo1.image_url(:thumb)) }
+    end
   end
 end
