@@ -45,6 +45,7 @@ describe "Album pages" do
 
     describe "page" do
       it { should have_selector('h1', text: album.name) }
+      it { should have_selector('h2', text: album.description) }
       it { should have_link("Add Photo", href: new_photo_path(album_id: album)) }
       it { should have_link("Edit Album", href: edit_album_path(album)) }
     end
@@ -59,15 +60,32 @@ describe "Album pages" do
       it "should display all photos" do
         album.photos[0..29].each do |photo|
           page.should have_selector('li', text: photo.name)
+          page.should have_link(photo.name, :href => photo_path(photo))
         end
       end
-    end
+    end      
 
     describe "when clicking on 'Add Photo'" do
       before { click_link "Add Photo" }
 
       it { should have_selector('h1', text: 'Add New Photo') }
       it { should have_content(album.name) }
+    end
+
+    describe "in place editing" do
+      before(:all) { FactoryGirl.create(:photo, album: album) }
+      after(:all) { Album.delete_all }
+
+      describe "album properties", :js => true do
+        before do
+          visit album_path(album)
+          bip_text album, :name, "New Album Name"
+          bip_text album, :description, "New Album Description"
+        end
+
+        it { should have_content("New Album Name") }
+        it { should have_content("New Album Description") }
+      end
     end
   end
   
@@ -116,6 +134,7 @@ describe "Album pages" do
     describe "page" do
       it { should have_selector('h1',    text: "Edit Album") }
       it { should have_selector('title', text: full_title("Edit Album")) }
+      it { should have_button('Update Album') }
     end
     
     describe "with invalid information" do

@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  respond_to :html, :json
 
   def index
     @albums = Album.paginate(page: params[:page])
@@ -29,11 +30,14 @@ class AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
-    if @album.update_attributes(params[:album])
-      flash[:success] = "Album Updated Successfully"
-      redirect_to @album
-    else
-      render 'edit'
+    respond_to do |format|
+      if @album.update_attributes(params[:album])
+        format.html { redirect_to @album, :flash => { :success => "Album Updated Successfully" }}
+        format.json { respond_with_bip(@album) }
+      else
+        format.html { render :action => "edit" }
+        format.json { respond_with_bip(@album) }
+      end
     end
   end
 end 

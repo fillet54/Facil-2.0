@@ -1,0 +1,5 @@
+<% provide(:title, @photo.name) %>
+<h1><%= @photo.name %></h1>
+
+<%= image_tag(@photo.image_url().to_s, alt: @photo.name) %>
+

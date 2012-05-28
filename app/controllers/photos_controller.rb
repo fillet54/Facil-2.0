@@ -15,4 +15,9 @@ class PhotosController < ApplicationController
       render action: 'new'
     end
   end
+
+  def show
+    @photo = Photo.find_by_id(params[:id])
+  end
+
 end
