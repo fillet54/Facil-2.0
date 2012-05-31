@@ -20,4 +20,11 @@ class PhotosController < ApplicationController
     @photo = Photo.find_by_id(params[:id])
   end
 
+  def destroy
+     photo = Photo.find_by_id(params[:id])
+     album = Album.find_by_id(photo.album_id)
+     photo.destroy
+     flash[:success] = "Photo Destroyed"
+     redirect_to album_path(album)
+  end
 end

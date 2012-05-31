@@ -31,6 +31,11 @@ describe "Photo pages" do
       it { should have_selector('h1', text: photo.name) }
       it { should have_selector('title', text: full_title(photo.name)) }
       it { should have_selector('img', src: photo.image_url.to_s) }
+      it { should have_link('Delete Photo') } 
     end
+
+    it "should be able to delete photo" do
+      expect { click_link('Delete Photo') }.to change(Photo, :count).by(-1) 
+    end 
   end
 end
