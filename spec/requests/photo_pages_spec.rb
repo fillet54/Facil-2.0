@@ -10,9 +10,16 @@ describe "Photo pages" do
     before { visit new_photo_path(album_id: album.id) }
 
     describe "with valid information" do
+      before { attach_file("photo_image", File.join(Rails.root, 'spec', 'support', 'photos', 'images', 'rails.png')) }
       it "should create a photo" do
         expect { click_button "Add Photo" }.to change(Photo, :count)
       end
+    end
+
+    describe "with invalid information" do
+       it "should not create photo when no file is provided" do
+          expect { click_button "Add Photo" }.to_not change(Photo, :count)
+       end
     end
   end
 
