@@ -88,6 +88,11 @@ describe "Album pages" do
         it { should have_content("New Album Description") }
       end
     end
+
+    describe "when clicking on 'Delete Album'" do
+      before { click_link "Delete Album" }
+      it { Album.find_by_id(album.id).should be nil }
+    end
   end
   
   describe "new" do

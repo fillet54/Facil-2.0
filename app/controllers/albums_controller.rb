@@ -40,4 +40,10 @@ class AlbumsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    Album.find_by_id(params[:id]).destroy
+    flash[:success] = "Album Destroyed"
+    redirect_to albums_path
+  end
 end 
