@@ -4,31 +4,7 @@
 
 <%= will_paginate @photos, param_name: :photos_page %>
 
-<% content_for :command_navigation do %>
-
-<div class="btn-group">
-    <a class="btn btn-primary" href="<%= new_photo_path(album_id: @album) %>">
-      <i class="icon-plus-sign icon-white"></i> Add Photo
-    </a>
-    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li>
-        <a href="<%= new_photo_path(album_id: @album) %>">
-          <i class="icon-plus-sign"></i> 
-          Add Photo
-        </a>
-      </li>
-      <li>
-        <a href="<%= edit_album_path(@album) %>">
-          <i class="icon-cog"></i> 
-          Edit Album
-        </a>
-      </li>
-    </ul>
-</div>
-<% end %>
+<%= render 'show_navigation', album: @album %>
 
 <div class="row">
   <div class="span12">

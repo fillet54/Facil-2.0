@@ -1,25 +1,7 @@
 <% provide(:title, @photo.name) %>
 <h1><%= @photo.name %></h1>
 
-<% content_for :command_navigation do %>
-   <div class="btn-group">
-      <%= link_to(@photo, method: :delete, confirm: "You sure?",
-                 class: "btn btn-primary") do %> 
-            <i class="icon-minus-sign icon-white"></i> Delete Photo
-      <% end %>
-    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li>
-        <a href="">
-          <i class="icon-minus-sign"></i> 
-          Delete Photo
-        </a>
-      </li>
-    </ul>
-</div>
-<% end %>
+<%= render 'show_navigation', photo: @photo %>
 
 <%= image_tag(@photo.image_url().to_s, alt: @photo.name) %>
 
