@@ -15,7 +15,7 @@ describe "Photo" do
   it { should be_valid }
 
   describe "without an image" do
-     let(:blank_photo) { FactoryGirl.build(:photo, album: album, image: nil) }  
-     it { blank_photo.should_not be_valid }
+     before { @photo.remove_image! }
+     it { should_not be_valid }
   end
 end

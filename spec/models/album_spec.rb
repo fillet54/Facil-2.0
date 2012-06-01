@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Album" do
 
   before do
-    @album = FactoryGirl.create(:album)
+    @album = FactoryGirl.build(:album)
   end
 
   subject { @album }
