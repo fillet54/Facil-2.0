@@ -26,11 +26,19 @@ describe "Album" do
   end
 
   describe "photo association" do
-    before { @album.save }
-    let(:photo1) { FactoryGirl.create(:photo, album: @album) }
-    let(:photo2) { FactoryGirl.create(:photo, album: @album) }
+    before { @album.save! }
+    let!(:photo1) { FactoryGirl.create(:photo, album: @album) }
+    let!(:photo2) { FactoryGirl.create(:photo, album: @album) }
     
     its(:photos) {should include(photo1, photo2) } 
+
+    it "should destroy associated photos" do
+       photos = @album.photos
+       @album.destroy
+       photos.each do |photo|
+         Photo.find_by_id(photo.id).should be_nil
+       end
+    end
   end
 
   describe "preview image" do

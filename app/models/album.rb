@@ -1,7 +1,7 @@
 class Album < ActiveRecord::Base
   attr_accessible :name, :description, :image_url
 
-  has_many :photos
+  has_many :photos, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
 
