@@ -1,0 +1,7 @@
+<li class="span2">
+<%= link_to image_tag(thumbnail.image_url(:thumb).to_s,
+                      alt: thumbnail.name), 
+            photo_path(thumbnail), 
+            remote: true,
+            class: "thumbnail" %>
+</li>

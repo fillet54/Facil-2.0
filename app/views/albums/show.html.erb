@@ -6,16 +6,18 @@
 
 <%= render 'show_navigation', album: @album %>
 
-<% if @album.photos.count == 0 %>
+<% if @photos.count == 0 %>
   <h1 class="notice">No Photos</h1>
 <% else %>
   <div class="row">
-    <div class="span8 largeThumbnail">
-      <img src="<%= @album.photos.first.image_url %>"></img>
+    <div class="span8" id="selectedPhotoContainer">
+      <div id="selectedPhoto">
+        <%= render @photos.first %>
+      </div>
     </div>
     <div class="span4">
       <ul class="thumbnails">
-        <%= render @photos %>
+        <%= render partial: 'photos/thumbnail', collection: @photos %>
       </ul>
     </div>
   </div>

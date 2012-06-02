@@ -1,6 +1,1 @@
-<li class="span2">
-<%= link_to image_tag(photo.image_url(:thumb).to_s,
-                      alt: photo.name), 
-            photo_path(photo), 
-            class: "thumbnail" %>
-</li>
+<%= image_tag photo.image_url().to_s, alt: photo.name %>

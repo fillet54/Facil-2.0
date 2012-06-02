@@ -165,15 +165,17 @@ input, textarea, select, .uneditable-input {
   }
 }
 
-.largeThumbnail {
+#selectedPhotoContainer {
   border: 1px solid #DDD;
   margin: 0px;
   padding: 4px;
-  img {
-    display: block;
-    margin: auto;
-    max-height: 414px;
-  }
+  min-height: 414px;
+}
+
+#selectedPhoto img {
+  display: block;
+  margin: auto;
+  max-height: 414px;
 }
 
 h1.notice {
