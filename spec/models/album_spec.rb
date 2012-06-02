@@ -43,7 +43,7 @@ describe "Album" do
 
   describe "preview image" do
     describe "without any photos" do
-      its(:image_url) { should eq("http://placehold.it/260x180") }
+      its(:image_url) { should eq("http://placehold.it/260x260") }
     end
 
     describe "with multiple photos" do

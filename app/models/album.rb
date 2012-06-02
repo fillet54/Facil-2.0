@@ -7,7 +7,7 @@ class Album < ActiveRecord::Base
 
   def image_url
     if photos.empty?
-      "http://placehold.it/260x180"
+      "http://placehold.it/260x260"
     else
       photos.first.image_url(:thumb).to_s
     end

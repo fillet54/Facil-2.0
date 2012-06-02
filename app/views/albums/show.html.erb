@@ -6,12 +6,18 @@
 
 <%= render 'show_navigation', album: @album %>
 
-<div class="row">
-  <div class="span12">
-    <ul class="thumbnails">
-      <%= render @photos %>
-    </ul>
+<% if @album.photos.count == 0 %>
+  <h1 class="notice">No Photos</h1>
+<% else %>
+  <div class="row">
+    <div class="span8 largeThumbnail">
+      <img src="<%= @album.photos.first.image_url %>"></img>
+    </div>
+    <div class="span4">
+      <ul class="thumbnails">
+        <%= render @photos %>
+      </ul>
+    </div>
   </div>
-</div>
-
+<% end %>
 <%= will_paginate @photos, param_name: :photos_page %>

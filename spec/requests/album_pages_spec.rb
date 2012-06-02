@@ -60,7 +60,6 @@ describe "Album pages" do
 
       it "should display all photos" do
         album.photos[0..29].each do |photo|
-          page.should have_selector('li', text: photo.name)
           page.should have_link(photo.name, :href => photo_path(photo))
         end
       end
@@ -92,6 +91,10 @@ describe "Album pages" do
     describe "when clicking on 'Delete Album'" do
       before { click_link "Delete Album" }
       it { Album.find_by_id(album.id).should be nil }
+    end
+
+    describe "when album has no photos" do
+      it { should have_content("No Photos") }
     end
   end
   
