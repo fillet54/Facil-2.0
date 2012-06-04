@@ -32,6 +32,16 @@ describe "Album pages" do
         end
       end
 
+      describe "when clicking on next page" do
+        before { click_link('Next') } 
+        it "should list all paginated albums" do 
+          Album.all[30..39].each do |album|
+            page.should have_selector('li', text: album.name)
+            page.should have_selector('img', src: album.image_url)
+          end
+        end
+      end
+
       describe "when clicking on an album" do
         before { click_link "Album 1" }
         
@@ -61,6 +71,15 @@ describe "Album pages" do
       it "should display all photos" do
         album.photos[0..29].each do |photo|
           page.should have_link(photo.name, :href => photo_path(photo))
+        end
+      end
+      
+      describe "when clicking on next page" do
+        before { click_link('Next') } 
+        it "should list all paginated photos" do 
+          album.photos[30..39].each do |photo|
+            page.should have_link(photo.name, :href => photo_path(photo))
+          end
         end
       end
     end      
