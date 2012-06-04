@@ -1,7 +1,10 @@
 <% provide(:title, @album.name) %>
+<div class="row">
+  <div class="span12">
 <h1><%= best_in_place @album, :name %> </h1>
 <h2><%= best_in_place @album, :description %> </h2>
-
+</div>
+</div>
 <%= will_paginate @photos, param_name: :photos_page %>
 
 <%= render 'show_navigation', album: @album %>
@@ -17,7 +20,7 @@
     </div>
     <div class="span4">
       <ul class="thumbnails">
-        <%= render partial: 'photos/thumbnail', collection: @photos %>
+        <%= render partial: 'photos/thumbnails', object: @photos %>
       </ul>
     </div>
   </div>

@@ -1,0 +1,13 @@
+<% thumbnails.each_with_index do |thumbnail, index| %>
+  <% if index % 3 == 0 %>
+    <div class="row-fluid">
+  <% end %>
+  <%= render partial: 'photos/thumbnail', object: thumbnail %>
+  <% if index % 3 == 2 %>
+    </div>
+  <% end %> 
+<% end %>
+
+<% if thumbnails.count != 0 && thumbnails.count % 3 == 0 %>
+  </div>
+<% end %>
