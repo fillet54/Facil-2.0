@@ -2,12 +2,12 @@ class AlbumsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @albums = Album.paginate(page: params[:page])
+    @albums = Album.page(params[:page]).per(30)
   end
 
   def show
     @album = Album.find_by_id(params[:id])
-    @photos = @album.photos.paginate(page: params[:photos_page])
+    @photos = @album.photos.page(params[:photos_page]).per(12)
   end
 
   def new

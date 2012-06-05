@@ -66,10 +66,9 @@ describe "Album pages" do
       after(:all) { Album.delete_all }
 
       it { should have_link('Next') }
-      it { should have_link('2') }
 
       it "should display all photos" do
-        album.photos[0..29].each do |photo|
+        album.photos[0..11].each do |photo|
           page.should have_link(photo.name, :href => photo_path(photo))
         end
       end
@@ -77,7 +76,7 @@ describe "Album pages" do
       describe "when clicking on next page" do
         before { click_link('Next') } 
         it "should list all paginated photos" do 
-          album.photos[30..39].each do |photo|
+          album.photos[12..23].each do |photo|
             page.should have_link(photo.name, :href => photo_path(photo))
           end
         end

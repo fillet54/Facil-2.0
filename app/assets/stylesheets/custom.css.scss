@@ -157,14 +157,13 @@ input, textarea, select, .uneditable-input {
   @extend .error;
 }
 
-
 ul.thumbnails {
-  margin-left: -15px; 
+  margin-left: 35px; 
+  margin-top: 5px;
   li {
-    margin: 0 0 2px 2px;
+    margin-bottom: 5px;
     a {
       @include no_border_radius;
-      @include no_box_shadow;
     }
   }
 }

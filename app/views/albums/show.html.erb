@@ -1,11 +1,10 @@
 <% provide(:title, @album.name) %>
 <div class="row">
   <div class="span12">
-<h1><%= best_in_place @album, :name %> </h1>
-<h2><%= best_in_place @album, :description %> </h2>
+    <h1><%= best_in_place @album, :name %> </h1>
+    <h2><%= best_in_place @album, :description %> </h2>
+  </div>
 </div>
-</div>
-<%= will_paginate @photos, param_name: :photos_page %>
 
 <%= render 'show_navigation', album: @album %>
 
@@ -19,10 +18,17 @@
       </div>
     </div>
     <div class="span4">
-      <ul class="thumbnails">
-        <%= render partial: 'photos/thumbnails', object: @photos %>
-      </ul>
+      <div class="row">
+        <%= link_to_previous_page @photos, 'Previous', title: 'Previous', class: 'span4 btn', param_name: :photos_page %>
+      </div>
+      <div class="row">
+        <ul class="thumbnails">
+          <%= render partial: 'photos/thumbnails', object: @photos %>
+        </ul>
+      </div>
+      <div class="row">
+        <%= link_to_next_page @photos, 'Next', class: "span4 btn btn-primary", title: 'Next', param_name: :photos_page %>
+      </div>
     </div>
   </div>
 <% end %>
-<%= will_paginate @photos, param_name: :photos_page %>
