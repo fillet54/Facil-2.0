@@ -19,16 +19,17 @@
     </div>
     <div class="span4">
       <div class="row">
-        <%= link_to_previous_page @photos, 'Previous', title: 'Previous', class: 'span4 btn', param_name: :photos_page %>
-      </div>
-      <div class="row">
-        <ul class="thumbnails">
-          <%= render partial: 'photos/thumbnails', object: @photos %>
-        </ul>
-      </div>
-      <div class="row">
-        <%= link_to_next_page @photos, 'Next', class: "span4 btn btn-primary", title: 'Next', param_name: :photos_page %>
-      </div>
+        <div class="gallery">
+          <ul class="thumbnails">
+            <%= render partial: 'photos/thumbnails', object: @photos %>
+          </ul>
+          <% if !(@photos.last_page?) %>
+            <%= link_to "", { photos_page: (@photos.current_page + 1) }, { class: "photos-control bottom", title: "Next" } %>
+          <% end %> 
+          <% if !(@photos.first_page?) %>
+            <%= link_to "", { photos_page: (@photos.current_page - 1) }, { class: "photos-control top", title: "Prev" } %>
+          <% end %> 
+        </div>
     </div>
   </div>
 <% end %>

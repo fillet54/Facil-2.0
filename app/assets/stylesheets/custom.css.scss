@@ -158,8 +158,7 @@ input, textarea, select, .uneditable-input {
 }
 
 ul.thumbnails {
-  margin-left: 35px; 
-  margin-top: 5px;
+  margin-left: 10px; 
   li {
     margin-bottom: 5px;
     a {
@@ -184,5 +183,43 @@ ul.thumbnails {
 h1.notice {
   color: #CCC;
   text-shadow: 0px 1px 0px #AAA;
+}
+
+.gallery {
+  position: relative;
+}
+
+.photos-control {
+  position: absolute;
+  top: -5px;
+  left: 44%;
+  width: 50px;
+  height: 49px;
+  margin-top: -20px;
+  font-size: 60px;
+  font-weight: 200;
+  line-height: 30px;
+  color: $white;
+  background: $grayDarker;
+  text-align: center;
+  border: 3px solid #ddd;
+  @include border-radius(28px);
+  opacity: .4; 
+
+  &.bottom {
+    top: auto;
+    bottom: -25px;
+    background: url('arrow_down.png');
+  }
+
+  &.top {
+    background: url('arrow_up.png');
+  }
+
+  &:hover {
+    color: $white;
+    text-decoration: none;
+    opacity: .8;
+  }
 }
 
