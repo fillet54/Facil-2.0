@@ -191,10 +191,10 @@ h1.notice {
 
 .photos-control {
   position: absolute;
-  top: -5px;
-  left: 44%;
-  width: 50px;
-  height: 49px;
+  top: 20px;
+  left: 100%;
+  width: 70px;
+  height: 75px;
   margin-top: -20px;
   font-size: 60px;
   font-weight: 200;
@@ -202,18 +202,17 @@ h1.notice {
   color: $white;
   background: $grayDarker;
   text-align: center;
-  border: 3px solid #ddd;
-  @include border-radius(28px);
   opacity: .4; 
+  background-size: 100%;
 
   &.bottom {
     top: auto;
-    bottom: -25px;
-    background: url('arrow_down.png');
+    bottom: 0px;
+    background: url('arrow_down.svg');
   }
 
   &.top {
-    background: url('arrow_up.png');
+    background: url('arrow_up.svg');
   }
 
   &:hover {
