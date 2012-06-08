@@ -32,6 +32,16 @@ describe "Album pages" do
         end
       end
 
+      describe "when clicking on next page" do
+        before { click_link('Next') } 
+        it "should list all paginated albums" do 
+          Album.all[30..39].each do |album|
+            page.should have_selector('li', text: album.name)
+            page.should have_selector('img', src: album.image_url)
+          end
+        end
+      end
+
       describe "when clicking on an album" do
         before { click_link "Album 1" }
         
@@ -56,12 +66,19 @@ describe "Album pages" do
       after(:all) { Album.delete_all }
 
       it { should have_link('Next') }
-      it { should have_link('2') }
 
       it "should display all photos" do
-        album.photos[0..29].each do |photo|
-          page.should have_selector('li', text: photo.name)
+        album.photos[0..11].each do |photo|
           page.should have_link(photo.name, :href => photo_path(photo))
+        end
+      end
+      
+      describe "when clicking on next page" do
+        before { click_link('Next') } 
+        it "should list all paginated photos" do 
+          album.photos[12..23].each do |photo|
+            page.should have_link(photo.name, :href => photo_path(photo))
+          end
         end
       end
     end      
@@ -92,6 +109,10 @@ describe "Album pages" do
     describe "when clicking on 'Delete Album'" do
       before { click_link "Delete Album" }
       it { Album.find_by_id(album.id).should be nil }
+    end
+
+    describe "when album has no photos" do
+      it { should have_content("No Photos") }
     end
   end
   

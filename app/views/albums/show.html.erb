@@ -1,17 +1,35 @@
 <% provide(:title, @album.name) %>
-<h1><%= best_in_place @album, :name %> </h1>
-<h2><%= best_in_place @album, :description %> </h2>
-
-<%= will_paginate @photos, param_name: :photos_page %>
-
-<%= render 'show_navigation', album: @album %>
-
 <div class="row">
   <div class="span12">
-    <ul class="thumbnails">
-      <%= render @photos %>
-    </ul>
+    <h1><%= best_in_place @album, :name %> </h1>
+    <h2><%= best_in_place @album, :description %> </h2>
   </div>
 </div>
 
-<%= will_paginate @photos, param_name: :photos_page %>
+<%= render 'show_navigation', album: @album %>
+
+<% if @photos.count == 0 %>
+  <h1 class="notice">No Photos</h1>
+<% else %>
+  <div class="row">
+    <div class="span8" id="selectedPhotoContainer">
+      <div id="selectedPhoto">
+        <%= render @photos.first %>
+      </div>
+    </div>
+    <div class="span4">
+      <div class="row">
+        <div class="gallery">
+          <ul class="thumbnails">
+            <%= render partial: 'photos/thumbnails', object: @photos %>
+          </ul>
+          <% if !(@photos.last_page?) %>
+            <%= link_to "", { photos_page: (@photos.current_page + 1) }, { class: "photos-control bottom", title: "Next" } %>
+          <% end %> 
+          <% if !(@photos.first_page?) %>
+            <%= link_to "", { photos_page: (@photos.current_page - 1) }, { class: "photos-control top", title: "Prev" } %>
+          <% end %> 
+        </div>
+    </div>
+  </div>
+<% end %>

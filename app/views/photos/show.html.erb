@@ -3,5 +3,5 @@
 
 <%= render 'show_navigation', photo: @photo %>
 
-<%= image_tag(@photo.image_url().to_s, alt: @photo.name) %>
+<%= render @photo %>
 

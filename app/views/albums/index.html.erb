@@ -1,7 +1,7 @@
 <% provide(:title, "Albums") %>
 <h1>All Albums</h1>
 
-<%= will_paginate %>
+<%= paginate @albums %>
 
 <% content_for :command_navigation do %>
   <li><div>
@@ -19,4 +19,4 @@
   </div>
 </div>
 
-<%= will_paginate %>
+<%= paginate @albums %>

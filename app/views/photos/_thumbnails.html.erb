@@ -1,0 +1,7 @@
+<% thumbnails.each_slice(3) do |slice| %>
+  <div class="row-fluid">
+    <% slice.each do |thumbnail| %>
+      <%= render partial: 'photos/thumbnail', object: thumbnail %>
+    <% end %> 
+  </div>
+<% end %>

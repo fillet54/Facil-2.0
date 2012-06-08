@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 gem 'bootstrap-sass'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+gem 'kaminari', :git => 'https://github.com/amatsuda/kaminari.git'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'best_in_place'
 gem 'thin'
+gem 'bourbon'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
