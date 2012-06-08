@@ -8,12 +8,11 @@ gem 'mini_magick'
 gem 'best_in_place'
 gem 'thin'
 gem 'bourbon'
-
+gem 'pg'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec-rails'
 end
 
@@ -32,10 +31,6 @@ group :test do
   gem 'capybara'
   gem 'spork'
   gem 'factory_girl_rails'
-end
-
-group :production do
-  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password

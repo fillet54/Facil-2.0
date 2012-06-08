@@ -1,0 +1,14 @@
+exit
+\x
+\q
+\d
+\d albums
+\q
+\d
+\d albums
+exit
+\q
+select * from albums
+\h
+\SELECT * from albums
+\s SELECT * from albums
