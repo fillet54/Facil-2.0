@@ -1,7 +1,9 @@
 GomeztreeCom::Application.routes.draw do
 
+  match "/signup" => "users#new", as: "signup"
   resources :albums
   resources :photos
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
