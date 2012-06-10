@@ -1,7 +1,8 @@
 <% provide(:title, @photo.name) %>
-<h1><%= @photo.name %></h1>
-
-<%= render 'show_navigation', photo: @photo %>
+<header class="jumbotron subhead">
+  <h1><%= @photo.name %></h1>
+  <%= render 'show_navigation', photo: @photo %>
+</header>
 
 <%= render @photo %>
 

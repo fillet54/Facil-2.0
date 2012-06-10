@@ -1,15 +1,10 @@
 <% provide(:title, "Albums") %>
-<h1>All Albums</h1>
+<header class="jumbotron subhead">
+  <h1>All Albums</h1>
+  <%= render 'index_navigation' %>
+</header>
 
 <%= paginate @albums %>
-
-<% content_for :command_navigation do %>
-  <li><div>
-    <a class="btn btn-primary" href="<%= new_album_path %>">
-      <i class="icon-plus-sign icon-white"></i> Create Album
-  </a></div>
-  <li>
-<% end %>
 
 <div class="row">
   <div class="span12">

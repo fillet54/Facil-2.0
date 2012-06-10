@@ -56,7 +56,7 @@ describe "Album pages" do
 
     describe "page" do
       it { should have_selector('h1', text: album.name) }
-      it { should have_selector('h2', text: album.description) }
+      it { should have_selector('p', text: album.description) }
       it { should have_link("Add Photo", href: new_photo_path(album_id: album)) }
       it { should have_link("Edit Album", href: edit_album_path(album)) }
     end

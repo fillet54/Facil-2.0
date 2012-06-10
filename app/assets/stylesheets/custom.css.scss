@@ -54,14 +54,12 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 10px;
-  text-align: center;
 }
 
 h2 {
   font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
   color: #999;
 }
@@ -112,26 +110,21 @@ footer {
 h1 input {
   font-size: 1em;
   padding: 0px;
-  margin-top: -2px;
-  margin-bottom: -2px;
+  margin-top: -4px;
+  margin-bottom: -6px;
   font-weight: bold;
   line-height: 1;
   color: #000;
   letter-spacing: -2px;
-  text-align:center;
   display: block;
 }
 
-h2 input {
+p input {
   font-size: 1em;
   padding: 0px;
   margin-bottom: 0px;
-  font-weight: normal;
   line-height: 1;
-  color: #999;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align:center;
+  margin-bottom: 19px;
   display: block;
 }
 
@@ -169,7 +162,6 @@ ul.thumbnails {
 
 #selectedPhotoContainer {
   border: 1px solid #DDD;
-  margin-left: 10px;
   padding: 4px;
   min-height: 396px;
 }
@@ -235,8 +227,12 @@ h1.notice {
   margin-bottom: 30px;
   
   .nav {
+    li.pull-right {
+      float: right;
+    }
     > li {
       float: left;
+
       > a {
         margin: 0;
         padding-top: 11px;
