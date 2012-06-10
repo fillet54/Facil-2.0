@@ -1,9 +1,12 @@
 GomeztreeCom::Application.routes.draw do
 
   match "/signup" => "users#new", as: "signup"
+  match "/signin" => "sessions#new", as: "signin"
+  match "/signout" => "sessions#destroy", as: "signout"
   resources :albums
   resources :photos
   resources :users
+  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
