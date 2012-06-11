@@ -252,6 +252,10 @@ h1.notice {
   }
 }
 
+#subnav-filler {
+  @extend .subnav;
+}
+
 .subnav-fixed {
   position: fixed;
   top: 40px;

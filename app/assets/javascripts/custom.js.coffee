@@ -11,6 +11,9 @@ jQuery ->
 
     if $('.subnav').attr('data-top') - $('.subnav').outerHeight() <= $(this).scrollTop()
       $('.subnav').addClass('subnav-fixed')
+      if $('#subnav-filler').length == 0
+        $('header.jumbotron').append('<div id="subnav-filler"></div>')
     else
       $('.subnav').removeClass('subnav-fixed') 
+      $('#subnav-filler').remove()
 
