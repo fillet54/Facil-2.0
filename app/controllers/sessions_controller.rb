@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       flash[:success] = "Successfully logged in."
-      sign_in user
+      sign_in user, permanent: params[:remember_me]
       redirect_to user_path(user)
     else 
       flash[:error] = "Error: Email and Password combination do not match our records."

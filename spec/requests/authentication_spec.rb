@@ -34,5 +34,39 @@ describe "Authentication" do
         it { should have_link('Sign in') }
       end
     end
+
+    describe "when remember me" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        fill_in "Email", with: user.email
+        fill_in "Password", with: user.password
+      end
+
+      describe "is not selected" do
+        before do
+          uncheck('Remember me')
+          click_button submit
+          expire_cookies
+          visit signin_path
+        end
+    
+        it "sets a non permanent cookie" do
+          page.should_not have_link('Profile', href: user_path(user)) 
+        end
+      end
+
+      describe "is selected" do
+        before do
+          check('Remember me')
+          click_button submit
+          expire_cookies
+          visit signin_path
+        end
+    
+        it "sets a permanent cookie" do
+          page.should have_link('Profile', href: user_path(user)) 
+        end
+      end
+    end
   end
 end

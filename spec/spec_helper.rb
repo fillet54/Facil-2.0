@@ -41,6 +41,9 @@ Spork.prefork do
       # remove carrierwave test files
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
     end
+
+    # Show me the cookies configuration
+    config.include ShowMeTheCookies, :type => :request
   end
 
   # Speed up test. We don't need to process

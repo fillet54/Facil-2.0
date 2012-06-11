@@ -1,6 +1,10 @@
 module SessionsHelper
-  def sign_in(user)
-    cookies[:remember_token] = user.id
+  def sign_in(user, options={permanent: false})
+    if options[:permanent] 
+      cookies.permanent[:remember_token] = user.remember_token
+    else
+      cookies[:remember_token] = user.remember_token
+    end
     current_user = user
   end
 
@@ -27,6 +31,6 @@ module SessionsHelper
   private
     def user_from_remember_token
       remember_token = cookies[:remember_token]
-      User.find_by_id(remember_token) unless remember_token.nil?
+      User.find_by_remember_token(remember_token) unless remember_token.nil?
     end
 end

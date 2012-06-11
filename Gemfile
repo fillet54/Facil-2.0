@@ -31,6 +31,7 @@ group :test do
   gem 'capybara'
   gem 'spork'
   gem 'factory_girl_rails'
+  gem 'show_me_the_cookies'
 end
 
 # To use ActiveModel has_secure_password
