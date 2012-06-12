@@ -19,9 +19,7 @@ describe "Authentication" do
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        fill_in "Email", with: user.email
-        fill_in "Password", with: user.password
-        click_button submit
+        sign_in user
       end
 
       it { should have_selector('div.alert.alert-success', text:  "Successfully logged in.") }
