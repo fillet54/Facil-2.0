@@ -54,14 +54,12 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 10px;
-  text-align: center;
 }
 
 h2 {
   font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
   color: #999;
 }
@@ -112,26 +110,21 @@ footer {
 h1 input {
   font-size: 1em;
   padding: 0px;
-  margin-top: -2px;
-  margin-bottom: -2px;
+  margin-top: -4px;
+  margin-bottom: -6px;
   font-weight: bold;
   line-height: 1;
   color: #000;
   letter-spacing: -2px;
-  text-align:center;
   display: block;
 }
 
-h2 input {
+p input {
   font-size: 1em;
   padding: 0px;
   margin-bottom: 0px;
-  font-weight: normal;
   line-height: 1;
-  color: #999;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align:center;
+  margin-bottom: 19px;
   display: block;
 }
 
@@ -169,7 +162,6 @@ ul.thumbnails {
 
 #selectedPhotoContainer {
   border: 1px solid #DDD;
-  margin-left: 10px;
   padding: 4px;
   min-height: 396px;
 }
@@ -221,6 +213,63 @@ h1.notice {
     color: $white;
     text-decoration: none;
     opacity: .8;
+  }
+}
+
+/* subnav */
+.subnav {
+  width: 100%;
+  height: 36px;
+  background-color: #EEE;
+  background-repeat: repeat-x;
+  @include background-image(linear-gradient(top, #F5F5F5, 0%, #EEE, 100%));
+  border: 1px solid #E5E5E5;
+  margin-bottom: 30px;
+  
+  .nav {
+    li.pull-right {
+      float: right;
+    }
+    > li {
+      float: left;
+
+      > a {
+        margin: 0;
+        padding-top: 11px;
+        padding-bottom:11px;
+        padding-right: 12px;
+        padding-left: 12px;
+        line-height: 14px;
+        border-left: 1px solid #F5F5F5;
+        border-right: 1px solid #E5E5E5;
+
+        &:hover {
+          @include background-image(linear-gradient(top, #DDD, 0%, #D5D5D5, 100%));
+        }
+
+      }
+    }
+  }
+}
+
+#subnav-filler {
+  @extend .subnav;
+}
+
+.subnav-fixed {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 1020;
+  border-color: #D5D5D5;
+  border-width: 0 0 1px;
+  @include box-shadow(0 1px 0 $white 0 1px 5px rgba(0, 0, 0, .1));
+  
+  .nav {
+    width: 928px;
+    margin: 0 auto;
+    padding: 0 1px;
   }
 }
 

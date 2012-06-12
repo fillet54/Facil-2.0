@@ -1,20 +1,20 @@
 <% provide(:title, @album.name) %>
-<div class="row">
-  <div class="span12">
-    <h1><%= best_in_place @album, :name %> </h1>
-    <h2><%= best_in_place @album, :description %> </h2>
-  </div>
-</div>
 
-<%= render 'show_navigation', album: @album %>
+<header class="jumbotron subhead">
+  <h1><%= best_in_place @album, :name %> </h1>
+  <p class="lead"><%= best_in_place @album, :description %> </p>
+  <%= render 'show_navigation', album: @album %>
+</header>
 
 <% if @photos.count == 0 %>
   <h1 class="notice">No Photos</h1>
 <% else %>
   <div class="row">
-    <div class="span8" id="selectedPhotoContainer">
-      <div id="selectedPhoto">
-        <%= render @photos.first %>
+    <div class="span8">
+      <div id="selectedPhotoContainer">
+        <div id="selectedPhoto">
+          <%= render @photos.first %>
+        </div>
       </div>
     </div>
     <div class="span4">
@@ -30,6 +30,7 @@
             <%= link_to "", { photos_page: (@photos.current_page - 1) }, { class: "photos-control top", title: "Prev" } %>
           <% end %> 
         </div>
+      </div>
     </div>
   </div>
 <% end %>

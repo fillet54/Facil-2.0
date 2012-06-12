@@ -1,0 +1,33 @@
+<% provide :title, "Sign in" %>
+<h1>Sign in</h1>
+
+<div class="row">
+  <div class="span6">
+    <%= form_tag sessions_path, class: "form-horizontal" do %>
+      <fieldset>
+        <div class="control-group">
+          <%= label_tag :email, "Email", class: "control-label" %>
+          <div class="controls">
+            <%= text_field_tag :email, params[:email], class: "input-xlarge" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= label_tag :password, "Password", class: "control-label" %>
+          <div class="controls">
+            <%= password_field_tag :password, params[:password], class: "input-xlarge" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= label_tag :remember_me, "Remember me", class: "control-label" %>
+          <div class="controls">
+            <%= check_box_tag :remember_me, params[:remember_me] %>
+          </div>
+        </div>
+        <div class="form-actions">
+            <%= submit_tag "Sign in", class: "btn btn-large btn-primary" %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
